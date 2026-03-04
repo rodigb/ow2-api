@@ -1,0 +1,499 @@
+[
+  {
+    "name": "D.Va",
+    "role": "tank",
+    "health": 650,
+    "abilities": [
+      "Boosters",
+      "Defense Matrix",
+      "Micro Missiles",
+      "Call Mech"
+    ],
+    "ultimate": "Self-Destruct",
+    "releaseDate": "2016-05-24"
+  },
+  {
+    "name": "Doomfist",
+    "role": "tank",
+    "health": 450,
+    "abilities": [
+      "Rocket Punch",
+      "Seismic Slam",
+      "Power Block"
+    ],
+    "ultimate": "Meteor Strike",
+    "releaseDate": "2017-07-27"
+  },
+  {
+    "name": "Junker Queen",
+    "role": "tank",
+    "health": 450,
+    "abilities": [
+      "Jagged Blade",
+      "Commanding Shout",
+      "Carnage"
+    ],
+    "ultimate": "Rampage",
+    "releaseDate": "2022-10-04"
+  },
+  {
+    "name": "Mauga",
+    "role": "tank",
+    "health": 650,
+    "abilities": [
+      "Incendiary Chaingun",
+      "Volatile Chaingun",
+      "Overrun",
+      "Cardiac Overdrive"
+    ],
+    "ultimate": "Cage Fight",
+    "releaseDate": "2023-12-05"
+  },
+  {
+    "name": "Orisa",
+    "role": "tank",
+    "health": 550,
+    "abilities": [
+      "Augmented Fusion Driver",
+      "Energy Javelin",
+      "Javelin Spin",
+      "Fortify"
+    ],
+    "ultimate": "Terra Surge",
+    "releaseDate": "2016-05-24"
+  },
+  {
+    "name": "Ramattra",
+    "role": "tank",
+    "health": 450,
+    "abilities": [
+      "Void Accelerator",
+      "Ravenous Vortex",
+      "Nemesis Form"
+    ],
+    "ultimate": "Annihilation",
+    "releaseDate": "2022-12-06"
+  },
+  {
+    "name": "Reinhardt",
+    "role": "tank",
+    "health": 650,
+    "abilities": [
+      "Barrier Field",
+      "Charge",
+      "Fire Strike"
+    ],
+    "ultimate": "Earthshatter",
+    "releaseDate": "2016-05-24"
+  },
+  {
+    "name": "Roadhog",
+    "role": "tank",
+    "health": 700,
+    "abilities": [
+      "Chain Hook",
+      "Take a Breather",
+      "Pig Pen"
+    ],
+    "ultimate": "Whole Hog",
+    "releaseDate": "2016-05-24"
+  },
+  {
+    "name": "Sigma",
+    "role": "tank",
+    "health": 550,
+    "abilities": [
+      "Kinetic Grasp",
+      "Accretion",
+      "Experimental Barrier"
+    ],
+    "ultimate": "Gravitic Flux",
+    "releaseDate": "2019-08-13"
+  },
+  {
+    "name": "Winston",
+    "role": "tank",
+    "health": 550,
+    "abilities": [
+      "Jump Pack",
+      "Barrier Projector",
+      "Tesla Cannon"
+    ],
+    "ultimate": "Primal Rage",
+    "releaseDate": "2016-05-24"
+  },
+  {
+    "name": "Wrecking Ball",
+    "role": "tank",
+    "health": 700,
+    "abilities": [
+      "Grappling Claw",
+      "Adaptive Shield",
+      "Roll",
+      "Piledriver"
+    ],
+    "ultimate": "Minefield",
+    "releaseDate": "2018-07-24"
+  },
+  {
+    "name": "Zarya",
+    "role": "tank",
+    "health": 475,
+    "abilities": [
+      "Particle Barrier",
+      "Projected Barrier",
+      "Particle Cannon"
+    ],
+    "ultimate": "Graviton Surge",
+    "releaseDate": "2016-05-24"
+  },
+  {
+    "name": "Ashe",
+    "role": "damage",
+    "health": 200,
+    "abilities": [
+      "Coach Gun",
+      "Dynamite"
+    ],
+    "ultimate": "B.O.B.",
+    "releaseDate": "2018-11-13"
+  },
+  {
+    "name": "Bastion",
+    "role": "damage",
+    "health": 300,
+    "abilities": [
+      "A-36 Tactical Grenade",
+      "Reconfigure"
+    ],
+    "ultimate": "Configuration: Artillery",
+    "releaseDate": "2016-05-24"
+  },
+  {
+    "name": "Cassidy",
+    "role": "damage",
+    "health": 225,
+    "abilities": [
+      "Combat Roll",
+      "Magnetic Grenade",
+      "Peacekeeper"
+    ],
+    "ultimate": "Deadeye",
+    "releaseDate": "2016-05-24"
+  },
+  {
+    "name": "Echo",
+    "role": "damage",
+    "health": 200,
+    "abilities": [
+      "Flight",
+      "Sticky Bombs",
+      "Focusing Beam"
+    ],
+    "ultimate": "Duplicate",
+    "releaseDate": "2020-04-14"
+  },
+  {
+    "name": "Genji",
+    "role": "damage",
+    "health": 200,
+    "abilities": [
+      "Shuriken",
+      "Deflect",
+      "Swift Strike"
+    ],
+    "ultimate": "Dragonblade",
+    "releaseDate": "2016-05-24"
+  },
+  {
+    "name": "Hanzo",
+    "role": "damage",
+    "health": 250,
+    "abilities": [
+      "Storm Arrows",
+      "Sonic Arrow",
+      "Lunge"
+    ],
+    "ultimate": "Dragonstrike",
+    "releaseDate": "2016-05-24"
+  },
+  {
+    "name": "Junkrat",
+    "role": "damage",
+    "health": 200,
+    "abilities": [
+      "Frag Launcher",
+      "Concussion Mine",
+      "Steel Trap"
+    ],
+    "ultimate": "RIP-Tire",
+    "releaseDate": "2016-05-24"
+  },
+  {
+    "name": "Mei",
+    "role": "damage",
+    "health": 250,
+    "abilities": [
+      "Cryo-Freeze",
+      "Ice Wall",
+      "Endothermic Blaster"
+    ],
+    "ultimate": "Blizzard",
+    "releaseDate": "2016-05-24"
+  },
+  {
+    "name": "Pharah",
+    "role": "damage",
+    "health": 250,
+    "abilities": [
+      "Jump Jet",
+      "Concussive Blast",
+      "Hover Jets"
+    ],
+    "ultimate": "Barrage",
+    "releaseDate": "2016-05-24"
+  },
+  {
+    "name": "Reaper",
+    "role": "damage",
+    "health": 300,
+    "abilities": [
+      "Wraith Form",
+      "Shadow Step",
+      "Hellfire Shotguns"
+    ],
+    "ultimate": "Death Blossom",
+    "releaseDate": "2016-05-24"
+  },
+  {
+    "name": "Sojourn",
+    "role": "damage",
+    "health": 250,
+    "abilities": [
+      "Power Slide",
+      "Disruptor Shot",
+      "Railgun"
+    ],
+    "ultimate": "Overclock",
+    "releaseDate": "2022-10-04"
+  },
+  {
+    "name": "Soldier: 76",
+    "role": "damage",
+    "health": 250,
+    "abilities": [
+      "Sprint",
+      "Biotic Field",
+      "Helix Rockets"
+    ],
+    "ultimate": "Tactical Visor",
+    "releaseDate": "2016-05-24"
+  },
+  {
+    "name": "Sombra",
+    "role": "damage",
+    "health": 225,
+    "abilities": [
+      "Hack",
+      "Stealth",
+      "Translocator",
+      "Virus"
+    ],
+    "ultimate": "EMP",
+    "releaseDate": "2016-11-15"
+  },
+  {
+    "name": "Symmetra",
+    "role": "damage",
+    "health": 225,
+    "abilities": [
+      "Sentry Turret",
+      "Teleporter",
+      "Photon Projector"
+    ],
+    "ultimate": "Photon Barrier",
+    "releaseDate": "2016-05-24"
+  },
+  {
+    "name": "Torbj\u00f6rn",
+    "role": "damage",
+    "health": 250,
+    "abilities": [
+      "Deploy Turret",
+      "Overload",
+      "Rivet Gun"
+    ],
+    "ultimate": "Molten Core",
+    "releaseDate": "2016-05-24"
+  },
+  {
+    "name": "Tracer",
+    "role": "damage",
+    "health": 150,
+    "abilities": [
+      "Blink",
+      "Recall",
+      "Pulse Pistols"
+    ],
+    "ultimate": "Pulse Bomb",
+    "releaseDate": "2016-05-24"
+  },
+  {
+    "name": "Venture",
+    "role": "damage",
+    "health": 250,
+    "abilities": [
+      "Drill Dash",
+      "Burrow",
+      "Smart Excavator"
+    ],
+    "ultimate": "Tectonic Shock",
+    "releaseDate": "2024-04-16"
+  },
+  {
+    "name": "Widowmaker",
+    "role": "damage",
+    "health": 200,
+    "abilities": [
+      "Grappling Hook",
+      "Venom Mine",
+      "Widow's Kiss"
+    ],
+    "ultimate": "Infra-Sight",
+    "releaseDate": "2016-05-24"
+  },
+  {
+    "name": "Ana",
+    "role": "support",
+    "health": 200,
+    "abilities": [
+      "Biotic Rifle",
+      "Sleep Dart",
+      "Biotic Grenade"
+    ],
+    "ultimate": "Nano Boost",
+    "releaseDate": "2016-07-19"
+  },
+  {
+    "name": "Baptiste",
+    "role": "support",
+    "health": 250,
+    "abilities": [
+      "Regenerative Burst",
+      "Immortality Field",
+      "Exo Boots"
+    ],
+    "ultimate": "Amplification Matrix",
+    "releaseDate": "2019-03-19"
+  },
+  {
+    "name": "Brigitte",
+    "role": "support",
+    "health": 250,
+    "abilities": [
+      "Repair Pack",
+      "Whip Shot",
+      "Barrier Shield",
+      "Shield Bash"
+    ],
+    "ultimate": "Rally",
+    "releaseDate": "2018-03-20"
+  },
+  {
+    "name": "Illari",
+    "role": "support",
+    "health": 250,
+    "abilities": [
+      "Healing Pylon",
+      "Outburst",
+      "Solar Rifle"
+    ],
+    "ultimate": "Captive Sun",
+    "releaseDate": "2023-08-10"
+  },
+  {
+    "name": "Juno",
+    "role": "support",
+    "health": 225,
+    "abilities": [
+      "Glide Boost",
+      "Pulsar Torpedoes",
+      "Mediblaster"
+    ],
+    "ultimate": "Orbital Ray",
+    "releaseDate": "2024-08-20"
+  },
+  {
+    "name": "Kiriko",
+    "role": "support",
+    "health": 200,
+    "abilities": [
+      "Healing Ofuda",
+      "Protection Suzu",
+      "Swift Step"
+    ],
+    "ultimate": "Kitsune Rush",
+    "releaseDate": "2022-10-04"
+  },
+  {
+    "name": "Lifeweaver",
+    "role": "support",
+    "health": 225,
+    "abilities": [
+      "Petal Platform",
+      "Life Grip",
+      "Healing Blossom"
+    ],
+    "ultimate": "Tree of Life",
+    "releaseDate": "2023-04-11"
+  },
+  {
+    "name": "L\u00facio",
+    "role": "support",
+    "health": 250,
+    "abilities": [
+      "Crossfade",
+      "Amp It Up",
+      "Soundwave",
+      "Wall Ride"
+    ],
+    "ultimate": "Sound Barrier",
+    "releaseDate": "2016-05-24"
+  },
+  {
+    "name": "Mercy",
+    "role": "support",
+    "health": 200,
+    "abilities": [
+      "Guardian Angel",
+      "Resurrect",
+      "Caduceus Staff"
+    ],
+    "ultimate": "Valkyrie",
+    "releaseDate": "2016-05-24"
+  },
+  {
+    "name": "Moira",
+    "role": "support",
+    "health": 200,
+    "abilities": [
+      "Biotic Grasp",
+      "Fade",
+      "Biotic Orb"
+    ],
+    "ultimate": "Coalescence",
+    "releaseDate": "2017-11-16"
+  },
+  {
+    "name": "Zenyatta",
+    "role": "support",
+    "health": 225,
+    "abilities": [
+      "Orb of Harmony",
+      "Orb of Discord",
+      "Snap Kick"
+    ],
+    "ultimate": "Transcendence",
+    "releaseDate": "2016-05-24"
+  }
+]
