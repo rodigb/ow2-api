@@ -11,20 +11,16 @@ const filePath = "./src/data/ow2_heroes.json";
 
 router.post("/addHero", async (req: Request, res: Response) => {
   try {
-    const { name, role, description, health, abilities, ultimate, releaseDate } = req.body;
+ 
+    const file = await fs.readFile(filePath, "utf-8");
+    const heroesFile = JSON.parse(file);
+
+    const validation = updateHeroSchema.safeParse(req.body);
 
     const newHero = {
       id: heroes.length + 1,
-      name,
-      role,
-      health,
-      abilities,
-      ultimate,
-      releaseDate,
-      description,
+      ...validation.data
     };
-
-    const validation = updateHeroSchema.safeParse(newHero);
     
     if (!validation.success) {
       return res.status(400).json({ 
@@ -33,8 +29,6 @@ router.post("/addHero", async (req: Request, res: Response) => {
       });
     }
 
-    const file = await fs.readFile(filePath, "utf-8");
-    const heroesFile = JSON.parse(file);
 
     heroesFile.push(newHero);
 
