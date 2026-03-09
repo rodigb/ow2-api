@@ -3,6 +3,8 @@ import getHeroesRouter from "./routes/getHeroes";
 import postHeroesRouter from "./routes/postHeroes";
 import postUserRouter from "./routes/postUser";
 import dotenv from "dotenv";
+import { authenticateToken } from "./middleware/authentication.middleware";
+import { requireAdmin } from "./middleware/requireAdmin.middleware";
 
 const app = express();
 app.use(express.json());
@@ -13,8 +15,8 @@ app.get("/", (req: Request, res: Response) => {
   res.send("API is running 🚀");
 });
 
-app.use("/heroes", postHeroesRouter);
-app.use("/heroes", getHeroesRouter);
+app.use("/heroes", authenticateToken, postHeroesRouter);
+app.use("/heroes", authenticateToken, getHeroesRouter);
 app.use("/", postUserRouter);
 
 const PORT = 3000;
