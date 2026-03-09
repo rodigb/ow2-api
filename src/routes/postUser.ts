@@ -2,7 +2,7 @@ import { Router, Request, Response, NextFunction } from "express";
 import fs from "fs/promises";
 import jwt from "jsonwebtoken";
 import { User } from "../models/types";
-import { authenticateToken, AuthenticatedRequest } from "../middleware/authentication";
+import { authenticateToken, AuthenticatedRequest } from "../middleware/authentication.middleware";
 
 
 const router = Router();

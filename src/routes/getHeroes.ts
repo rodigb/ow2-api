@@ -1,8 +1,11 @@
 import { Router, Request, Response } from "express";
 import heroes from "../data/ow2_heroes.json";
+import { authenticateToken } from "../middleware/authentication.middleware";
 
 const router = Router();
 
+router.use(authenticateToken);
+ 
  router.get("/", (req, res) => {
 
     const { role, name } = req.query;
