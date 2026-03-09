@@ -9,3 +9,11 @@ export interface Hero {
   ultimate: string;
   releaseDate: string;
 }
+
+export interface User {
+  id: string;
+  username: string;
+  email: string;
+  password: string;
+  role: "admin" | "user";
+}
