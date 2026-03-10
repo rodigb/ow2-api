@@ -2,12 +2,18 @@
 import { Box, Button, TextField } from "@mui/material";
 import Image from "next/image";
 import React from "react";
-import Snackbar from '@mui/material/Snackbar';
-
+import Snackbar from "@mui/material/Snackbar";
+import { useRouter } from "next/navigation";
+import Router from "next/router";
+import LoadingDialog from "./loadingDialog";
 
 export default function LoginPage() {
+  const router = useRouter();
+
   const [username, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");
+
+  const [loading, setLoading] = React.useState(false);
 
   const [snackbar, setSnackbar] = React.useState<{
     open: boolean;
@@ -22,75 +28,103 @@ export default function LoginPage() {
     username: string;
     password: string;
   }) => {
-    const response = await fetch("http://localhost:5000/login", {
+    setLoading(true);
+    try {
+      const response = await fetch("http://localhost:5000/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ username, password }),
-    });
+      });
 
-    const data = await response.json();
+      const data = await response.json();
 
-    if (response.ok) {
+      console.log(data.data?.token);
+
+      data.data?.token && localStorage.setItem("token", data.data.token);
+
+      if (response.ok) {
+      setSnackbar({
+        open: true,
+        message: "Login successful!",
+        type: "success",
+      });
       console.log("Login successful:", data);
-      setSnackbar({ open: true, message: "Login successful!", type: "success" });
-    } else {
-      console.error("Login failed:", data);
-      setSnackbar({ open: true, message: "Login failed!", type: "error" });
+      router.push("/dashboard");
+      } else {
+      setSnackbar({
+        open: true,
+        message: data.message || "Login failed!",
+        type: "error",
+      });
+      }
+    } catch (error) {
+      setSnackbar({
+      open: true,
+      message: "An error occurred!",
+      type: "error",
+      });
+      console.error("Login error:", error);
+    } finally {
+      setLoading(false);
     }
   };
+  if(loading) {
+    return <LoadingDialog/>
+  }
   return (
     <>
-    <Snackbar
-      open={snackbar.open}
-      autoHideDuration={3000}
-      onClose={() => setSnackbar({ ...snackbar, open: false })}
-      message={snackbar.message}
-      anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
-    />
-    <Box
-      sx={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "100vh",
-      }}
-    >
+      <Snackbar
+        open={snackbar.open}
+        autoHideDuration={3000}
+        onClose={() => setSnackbar({ ...snackbar, open: false })}
+        message={snackbar.message}
+      />
       <Box
         sx={{
           display: "flex",
-          flexDirection: "column",
-          gap: 2,
-          width: "300px",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
         }}
       >
-        <Box sx={{width: "100%", display: "flex", justifyContent: "center"}}>
-          <Image
-            src="/ow_logo.png"
-            alt="Overwatch Logo"
-            width={100}
-            height={100}
-            style={{ marginBottom: "2rem" }}
-          />
-        </Box>
-        <TextField
-          label="Username"
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <TextField
-          label="Password"
-          type="password"
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <Button
-          variant="contained"
-          onClick={() => handleLogin({ username, password })}
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            gap: 2,
+            width: "300px",
+          }}
         >
-          Login
-        </Button>
+          <Box
+            sx={{ width: "100%", display: "flex", justifyContent: "center" }}
+          >
+            <Image
+              src="/ow_logo.png"
+              alt="Overwatch Logo"
+              width={100}
+              height={100}
+              style={{ marginBottom: "2rem" }}
+            />
+          </Box>
+          <TextField
+            label="Username"
+            onChange={(e) => setUsername(e.target.value)}
+          />
+          <TextField
+            label="Password"
+            type="password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <Button
+            variant="contained"
+            onClick={() => handleLogin({ username, password })}
+          >
+            Login
+          </Button>
+        </Box>
       </Box>
-    </Box>
     </>
   );
 }

@@ -1,39 +1,28 @@
 "use client";
 import { Box, Button, TextField } from "@mui/material";
-import React from "react";
-import { useRouter } from "next/navigation";
+import React, { useEffect, useState } from "react";
 
-export default function LoginPage() {
+export default function DashboardPage() {
+  const [heroes, setHeroes] = useState<any>(null);
 
-  const router = useRouter();
-  router.push("/dashboard");
+ const getHeroes = async () => {
+  const jwt = localStorage.getItem("token");
 
-  const [username, setUsername] = React.useState("");
-  const [password, setPassword] = React.useState("");
+  const response = await fetch("http://localhost:5000/heroes", {
+    headers: {
+      Authorization: `Bearer ${jwt}`,
+    },
+  });
 
-  const handleLogin = async ({
-    username,
-    password,
-  }: {
-    username: string;
-    password: string;
-  }) => {
-    const response = await fetch("http://localhost:5000/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ username, password }),
-    });
+  const data = await response.json();
 
-    const data = await response.json();
-
-    if (response.ok) {
-      console.log("Login successful:", data);
-    } else {
-      console.error("Login failed:", data);
-    }
-  };
+  return <p>{JSON.stringify(data)}</p>;
+};
+  useEffect(() => {
+    getHeroes();
+  }, [])
+  
+  
   return (
     <Box
       sx={{
@@ -51,21 +40,8 @@ export default function LoginPage() {
           width: "300px",
         }}
       >
-        <TextField
-          label="Username"
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <TextField
-          label="Password"
-          type="password"
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <Button
-          variant="contained"
-          onClick={() => handleLogin({ username, password })}
-        >
-          Login
-        </Button>
+        {getHeroes()}
+       
       </Box>
     </Box>
   );
