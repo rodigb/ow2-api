@@ -2,8 +2,6 @@ import { Router, Request, Response, NextFunction } from "express";
 import fs from "fs/promises";
 import jwt from "jsonwebtoken";
 import { User } from "../models/types";
-import { authenticateToken, AuthenticatedRequest } from "../middleware/authentication.middleware";
-
 
 const router = Router();
 const filePath = "./src/data/users.json";
@@ -52,7 +50,7 @@ router.post(
           role: existingUser.role,
         },
         secret,
-        { expiresIn: "1h" }
+        { expiresIn: "1h" },
       );
 
       return res.status(200).json({
@@ -67,7 +65,7 @@ router.post(
     } catch (error) {
       return next(error);
     }
-  }
+  },
 );
 
 export default router;
