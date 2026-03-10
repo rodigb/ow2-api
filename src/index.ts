@@ -19,7 +19,7 @@ app.use("/heroes", authenticateToken, postHeroesRouter);
 app.use("/heroes", authenticateToken, getHeroesRouter);
 app.use("/", postUserRouter);
 
-const PORT = 3000;
+const PORT = 5000;
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
