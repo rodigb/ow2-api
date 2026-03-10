@@ -2,10 +2,18 @@
 import { Box, Button, TextField } from "@mui/material";
 import Image from "next/image";
 import React from "react";
+import Snackbar from '@mui/material/Snackbar';
+
 
 export default function LoginPage() {
   const [username, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");
+
+  const [snackbar, setSnackbar] = React.useState<{
+    open: boolean;
+    message: string;
+    type?: "success" | "error";
+  }>({ open: false, message: "", type: undefined });
 
   const handleLogin = async ({
     username,
@@ -26,11 +34,21 @@ export default function LoginPage() {
 
     if (response.ok) {
       console.log("Login successful:", data);
+      setSnackbar({ open: true, message: "Login successful!", type: "success" });
     } else {
       console.error("Login failed:", data);
+      setSnackbar({ open: true, message: "Login failed!", type: "error" });
     }
   };
   return (
+    <>
+    <Snackbar
+      open={snackbar.open}
+      autoHideDuration={3000}
+      onClose={() => setSnackbar({ ...snackbar, open: false })}
+      message={snackbar.message}
+      anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+    />
     <Box
       sx={{
         display: "flex",
@@ -73,5 +91,6 @@ export default function LoginPage() {
         </Button>
       </Box>
     </Box>
+    </>
   );
 }
