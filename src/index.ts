@@ -5,9 +5,12 @@ import postUserRouter from "./routes/postUser";
 import dotenv from "dotenv";
 import { authenticateToken } from "./middleware/authentication.middleware";
 import { requireAdmin } from "./middleware/requireAdmin.middleware";
+import cors from "cors";
 
 const app = express();
 app.use(express.json());
+app.use(cors());
+
 
 dotenv.config();
 
