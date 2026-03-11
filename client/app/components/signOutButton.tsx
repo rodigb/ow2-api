@@ -1,26 +1,30 @@
 "use client";
-import { Button } from '@mui/material';
-import { useRouter } from 'next/navigation';
+import { Button } from "@mui/material";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export default function SignOutButton() {
-    const router = useRouter();
+  const [isJWTPresent, setIsJWTPresent] = useState(false);
 
-    const handleSignOut = () => {
-        if(!localStorage.getItem('jwt')) {
-            router.push('/login');
-            return;
-        }
-        localStorage.removeItem('jwt');
-        router.push('/login');
-    };
+  const router = useRouter();
 
-    const isJWTPresent = !!localStorage.getItem('jwt');
+  const handleSignOut = () => {
+    if (!localStorage.getItem("token")) {
+      router.push("/login");
+      return;
+    }
+    localStorage.removeItem("token");
+    router.push("/login");
+  };
 
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    setIsJWTPresent(!!token);
+  }, []);
 
-
-    return (
-        <Button variant="contained" color="error" onClick={handleSignOut}>
-            {isJWTPresent ? 'Sign Out' : 'Sign In'}
-        </Button>
-    );
+  return (
+    <Button variant="contained" color="error" onClick={handleSignOut}>
+      {isJWTPresent ? "Sign Out" : "Sign In"}
+    </Button>
+  );
 }
