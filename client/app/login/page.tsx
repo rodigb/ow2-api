@@ -4,7 +4,6 @@ import Image from "next/image";
 import React from "react";
 import Snackbar from "@mui/material/Snackbar";
 import { useRouter } from "next/navigation";
-import Router from "next/router";
 import LoadingDialog from "./loadingDialog";
 
 export default function LoginPage() {
@@ -39,8 +38,6 @@ export default function LoginPage() {
       });
 
       const data = await response.json();
-
-      console.log(data.data?.token);
 
       data.data?.token && localStorage.setItem("token", data.data.token);
 
@@ -86,7 +83,7 @@ export default function LoginPage() {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          height: "100vh",
+          height: "calc(100vh - 64px)",
         }}
       >
         <Box

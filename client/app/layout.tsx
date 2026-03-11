@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@mui/material/styles";
+import Box from "@mui/material/Box";
 import { theme } from "./theme";
+import NavigationBar from "./components/navigationBar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,7 +32,8 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ThemeProvider theme={theme}>
-        {children}
+          <NavigationBar/>
+          <Box sx={{ pt: "64px" }}>{children}</Box>
         </ThemeProvider>
       </body>
     </html>
