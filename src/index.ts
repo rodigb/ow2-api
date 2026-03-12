@@ -11,6 +11,12 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+const swaggerUi = require("swagger-ui-express");
+const YAML = require("yamljs");
+
+const swaggerDocument = YAML.load("./src/openapi.yaml");
+
+app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 dotenv.config();
 
