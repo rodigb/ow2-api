@@ -63,5 +63,13 @@ export const theme = createTheme({
         },
       },
     },
+    MuiTableCell: {
+      styleOverrides: {
+        head: {
+           fontWeight: 800,
+          fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+        },
+      },
+    },
   },
 });

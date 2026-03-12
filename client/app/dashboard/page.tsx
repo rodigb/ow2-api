@@ -2,8 +2,8 @@
 import { Box, Button, TextField } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import HeroesTable from "../components/heroesTable";
+
 export default function DashboardPage() {
-  const [heroes, setHeroes] = useState<any>(null);
 
   const getHeroes = async () => {
     const jwt = localStorage.getItem("token");

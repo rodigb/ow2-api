@@ -13,8 +13,7 @@ import { useEffect, useState } from "react";
 import { Hero } from "./types";
 
 export default function HeroesTable() {
-
-    const [heroes, setHeroes] = useState<Hero[]>([]);
+  const [heroes, setHeroes] = useState<Hero[]>([]);
 
   const getHeroes = async () => {
     const jwt = localStorage.getItem("token");
@@ -31,14 +30,18 @@ export default function HeroesTable() {
   };
 
   useEffect(() => {
-    getHeroes().then((data) => setHeroes(data));
+    getHeroes().then((data) => setHeroes(data.heroes));
   }, []);
 
   return (
-    <TableContainer component={Paper} elevation={2}>
+    <TableContainer
+      component={Paper}
+      elevation={2}
+      sx={{ maxWidth: 700, margin: "0 auto" }}
+    >
       <Table aria-label="heroes table">
-        <TableHead sx={{ height: 16 }}>
-          <TableRow>
+        <TableHead sx={{ height: 16, }}>
+          <TableRow sx={{fontWeight: 800, fontSize: 16}}>
             <TableCell>Image</TableCell>
             <TableCell>Name</TableCell>
             <TableCell>Role</TableCell>
@@ -51,11 +54,11 @@ export default function HeroesTable() {
         </TableHead>
 
         <TableBody>
-          {heroes.length === 0 ? (
+          {!heroes || heroes.length === 0 ? (
             <TableRow>
               <TableCell colSpan={8} align="center">
                 <Typography variant="body2" color="text.secondary">
-                  No heroes available yet.
+                  no heroes list
                 </Typography>
               </TableCell>
             </TableRow>
