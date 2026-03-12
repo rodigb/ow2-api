@@ -13,9 +13,11 @@ import {
 import HeroesRow from "./heroesTable.row";
 import { useEffect, useState } from "react";
 import { Hero } from "./types";
+import HeroesTableSkeleton from "./heroesTableSkeleton";
 
 export default function HeroesTable() {
   const [heroes, setHeroes] = useState<Hero[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const getHeroes = async () => {
     const jwt = localStorage.getItem("token");
@@ -36,45 +38,54 @@ export default function HeroesTable() {
   };
 
   useEffect(() => {
-    getHeroes().then((data) => setHeroes(data));
+    getHeroes().then((data) => {
+      setHeroes(data);
+      setIsLoading(false);
+    });
   }, []);
 
   return (
-    <TableContainer
-      component={Paper}
-      elevation={2}
-      sx={{ maxWidth: 700, margin: "0 auto" }}
-    >
-      <Table aria-label="heroes table">
-        <TableHead sx={{ height: 16, }}>
-          <TableRow sx={{fontWeight: 800, fontSize: 16}}>
-            <TableCell>Image</TableCell>
-            <TableCell>Name</TableCell>
-            <TableCell>Role</TableCell>
-            <TableCell>Location</TableCell>
-            <TableCell align="right">Health</TableCell>
-            <TableCell align="right">Armor</TableCell>
-            <TableCell align="right">Shields</TableCell>
-            <TableCell align="right">Total HP</TableCell>
-          </TableRow>
-        </TableHead>
-
-        <TableBody>
-          {!heroes || heroes.length === 0 ? (
-            <TableRow>
-              <TableCell colSpan={8} align="center">
-                <Typography variant="body2" color="text.secondary">
-                  no heroes list
-                </Typography>
-              </TableCell>
+    <>
+    {isLoading ? (
+        <HeroesTableSkeleton rows={6} />
+      ) : (
+      <TableContainer
+        component={Paper}
+        elevation={2}
+        sx={{ maxWidth: 700, margin: "0 auto" }}
+      >
+        <Table aria-label="heroes table">
+          <TableHead sx={{ height: 16 }}>
+            <TableRow sx={{ fontWeight: 800, fontSize: 16 }}>
+              <TableCell>Image</TableCell>
+              <TableCell>Name</TableCell>
+              <TableCell>Role</TableCell>
+              <TableCell>Location</TableCell>
+              <TableCell align="right">Health</TableCell>
+              <TableCell align="right">Armor</TableCell>
+              <TableCell align="right">Shields</TableCell>
+              <TableCell align="right">Total HP</TableCell>
             </TableRow>
-          ) : (
-            heroes.map((hero) => (
-              <HeroesRow key={hero.name} heroObject={hero} />
-            ))
-          )}
-        </TableBody>
-      </Table>
-    </TableContainer>
+          </TableHead>
+
+          <TableBody>
+            {!heroes || heroes.length === 0 ? (
+              <TableRow>
+                <TableCell colSpan={8} align="center">
+                  <Typography variant="body2" color="text.secondary">
+                    no heroes list
+                  </Typography>
+                </TableCell>
+              </TableRow>
+            ) : (
+              heroes.map((hero) => (
+                <HeroesRow key={hero.name} heroObject={hero} />
+              ))
+            )}
+          </TableBody>
+        </Table>
+      </TableContainer>
+      )}
+    </>
   );
 }
