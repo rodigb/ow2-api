@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Paper,
   Table,
@@ -26,11 +28,15 @@ export default function HeroesTable() {
 
     const data = await response.json();
 
+    if (!response.ok || !Array.isArray(data)) {
+      return [];
+    }
+
     return data;
   };
 
   useEffect(() => {
-    getHeroes().then((data) => setHeroes(data.heroes));
+    getHeroes().then((data) => setHeroes(data));
   }, []);
 
   return (
