@@ -1,5 +1,5 @@
 "use client";
-import { Box, Button, TextField } from "@mui/material";
+import { Alert, Box, Button, TextField } from "@mui/material";
 import Image from "next/image";
 import React from "react";
 import Snackbar from "@mui/material/Snackbar";
@@ -18,6 +18,7 @@ export default function LoginPage() {
     open: boolean;
     message: string;
     type?: "success" | "error";
+    severity?: "success" | "error";
   }>({ open: false, message: "", type: undefined });
 
   const handleLogin = async ({
@@ -30,11 +31,11 @@ export default function LoginPage() {
     setLoading(true);
     try {
       const response = await fetch("http://localhost:5000/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ username, password }),
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username, password }),
       });
 
       const data = await response.json();
@@ -42,33 +43,36 @@ export default function LoginPage() {
       data.data?.token && localStorage.setItem("token", data.data.token);
 
       if (response.ok) {
-      setSnackbar({
-        open: true,
-        message: "Login successful!",
-        type: "success",
-      });
-      console.log("Login successful:", data);
-      router.push("/dashboard");
+        setSnackbar({
+          open: true,
+          message: "Login successful!",
+          type: "success",
+          severity: "success",
+        });
+        console.log("Login successful:", data);
+        router.push("/dashboard");
       } else {
-      setSnackbar({
-        open: true,
-        message: data.message || "Login failed!",
-        type: "error",
-      });
+        setSnackbar({
+          open: true,
+          message: data.message || "Login failed!",
+          type: "error",
+          severity: "error",
+        });
       }
     } catch (error) {
       setSnackbar({
-      open: true,
-      message: "An error occurred!",
-      type: "error",
+        open: true,
+        message: "An error occurred!",
+        type: "error",
+        severity: "error",
       });
       console.error("Login error:", error);
     } finally {
       setLoading(false);
     }
   };
-  if(loading) {
-    return <LoadingDialog/>
+  if (loading) {
+    return <LoadingDialog />;
   }
   return (
     <>
@@ -77,7 +81,11 @@ export default function LoginPage() {
         autoHideDuration={3000}
         onClose={() => setSnackbar({ ...snackbar, open: false })}
         message={snackbar.message}
-      />
+      >
+        <Alert severity={snackbar.severity} variant="filled" sx={{ width: "100%" }}>
+          {snackbar.message}
+        </Alert> 
+      </Snackbar>
       <Box
         sx={{
           display: "flex",
